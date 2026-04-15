@@ -15,9 +15,10 @@ for (let div of allDivs) {
 
         const dropElement = e.currentTarget
 
-        const draggedElement = document.getElementById(
-            e.dataTransfer.getData("text")
-        )
+        const draggedId = e.dataTransfer.getData("text")
+        const draggedElement = document.getElementById(draggedId)
+
+        if (!draggedElement) return // ✅ safety
 
         const dropBg = getComputedStyle(dropElement).backgroundImage
         const dragBg = getComputedStyle(draggedElement).backgroundImage
